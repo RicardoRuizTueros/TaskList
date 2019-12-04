@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Clean room",
+        "categories": [1, 2]
+    },
+    {
+        "id": 2,
+        "name": "Do shopping",
+        "categories": []
+    },
+    {
+        "id": 3,
+        "name": "Walk dog",
+        "categories": [2]
+    },
+]
