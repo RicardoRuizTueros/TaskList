@@ -72,23 +72,55 @@
 		8C90DA26239710E4009A559F /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
-				8C5267BD239716EC0077908D /* TaskListViewController.swift */,
+				8CE7328B2397DFDD008A5E4E /* Custom Cells */,
+				8CE7328A2397DFC6008A5E4E /* Model Fetcher */,
+				8CE732892397DFAF008A5E4E /* ViewControllers */,
+				8CE732882397DF8C008A5E4E /* Models */,
 				8C90DA27239710E4009A559F /* AppDelegate.swift */,
 				8C90DA29239710E4009A559F /* SceneDelegate.swift */,
 				8C90DA2D239710E4009A559F /* Main.storyboard */,
 				8C90DA30239710E5009A559F /* Assets.xcassets */,
 				8C90DA32239710E5009A559F /* LaunchScreen.storyboard */,
 				8C90DA35239710E5009A559F /* Info.plist */,
-				8C90DA3B2397155D009A559F /* Tasks.json */,
-				8C5267C0239717560077908D /* Task.swift */,
-				8C5267C22397178C0077908D /* TaskFetcher.swift */,
-				8C5267C6239718DE0077908D /* TaskCell.swift */,
-				8C180EA42397486F00D50881 /* CategoriesListViewController.swift */,
-				8C180EA62397494300D50881 /* Category.swift */,
-				8C180EA8239749A400D50881 /* Categories.json */,
-				8C180EAA23974A1500D50881 /* CategoriesFetcher.swift */,
 			);
 			path = TaskList;
+			sourceTree = "<group>";
+		};
+		8CE732882397DF8C008A5E4E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C180EA62397494300D50881 /* Category.swift */,
+				8C5267C0239717560077908D /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8CE732892397DFAF008A5E4E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C180EA42397486F00D50881 /* CategoriesListViewController.swift */,
+				8C5267BD239716EC0077908D /* TaskListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8CE7328A2397DFC6008A5E4E /* Model Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				8C180EA8239749A400D50881 /* Categories.json */,
+				8C90DA3B2397155D009A559F /* Tasks.json */,
+				8C180EAA23974A1500D50881 /* CategoriesFetcher.swift */,
+				8C5267C22397178C0077908D /* TaskFetcher.swift */,
+			);
+			path = "Model Fetcher";
+			sourceTree = "<group>";
+		};
+		8CE7328B2397DFDD008A5E4E /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8C5267C6239718DE0077908D /* TaskCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -13,9 +13,11 @@ import Foundation
 public class CategoriesFetcher {
     var categories = [Category]()
     
-    //    private let jsonPath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Tasks.json")
+    // Path used for target physical devide, no default info
+    private let jsonPath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Categories.json")
     
-    private let jsonPath = URL(fileURLWithPath: Bundle.main.path(forResource: "Categories", ofType: "json")!)
+    // Path used in simulator with json files provided
+    //    private let jsonPath = URL(fileURLWithPath: Bundle.main.path(forResource: "Categories", ofType: "json")!)
     
     init() {
         LoadCategories()

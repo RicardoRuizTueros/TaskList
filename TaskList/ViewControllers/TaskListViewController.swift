@@ -15,6 +15,8 @@ class TaskListViewController: UITableViewController, UISearchResultsUpdating {
     let searchController = UISearchController(searchResultsController: nil)
     var filteredTasks: [Task] = []
     
+    // MARK: Viewcontroller lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +34,23 @@ class TaskListViewController: UITableViewController, UISearchResultsUpdating {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.searchBar.searchBarStyle = .minimal
     }
+    
+    // MARK: SearchController delegate
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredTasks = taskFetcher.tasks.filter({ (searchedTask) -> Bool in
+            return searchedTask.name.lowercased().contains(searchText.lowercased()) || searchText == ""
+        })
+        
+        tableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+
+    // MARK: Tableview delegates
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
@@ -95,14 +114,11 @@ class TaskListViewController: UITableViewController, UISearchResultsUpdating {
         let task = filteredTasks[indexPath.row]
         var cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as? TaskCell
         
-        //        if cell == nil {
         cell = TaskCell(id: task.id, name: task.name)
         cell!.taskName.addTarget(self, action: #selector(TextFieldDidChange(_:)), for: UIControl.Event.editingDidEnd)
-        //        }
         
         return cell!
     }
-    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -119,25 +135,14 @@ class TaskListViewController: UITableViewController, UISearchResultsUpdating {
         show(CategoriesListViewController(selectedTask: filteredTasks[indexPath.row], taskListVC: self), sender: self)
     }
     
-    func filterContentForSearchText(_ searchText: String) {
-        filteredTasks = taskFetcher.tasks.filter({ (searchedTask) -> Bool in
-            return searchedTask.name.lowercased().contains(searchText.lowercased()) || searchText == ""
-        })
-        
-        tableView.reloadData()
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        filterContentForSearchText(searchBar.text!)
-    }
+    // MARK: Selector
     
     @objc func AddTask()
     {
         taskFetcher.AddTask()
         updateSearchResults(for: searchController)
     }
-
+    
     
     @objc func TextFieldDidChange(_ textField: UITextField)
     {
@@ -145,6 +150,3 @@ class TaskListViewController: UITableViewController, UISearchResultsUpdating {
         updateSearchResults(for: searchController)
     }
 }
-
-
-

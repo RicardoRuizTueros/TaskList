@@ -11,9 +11,11 @@ import Foundation
 public class TaskFetcher {
     var tasks = [Task]()
     
-    //    private let jsonPath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Tasks.json")
+    // Path used for target physical devide, no default info
+    private let jsonPath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Tasks.json")
     
-    private let jsonPath = URL(fileURLWithPath: Bundle.main.path(forResource: "Tasks", ofType: "json")!)
+    // Path used in simulator with json files provided
+    //    private let jsonPath = URL(fileURLWithPath: Bundle.main.path(forResource: "Tasks", ofType: "json")!)
     
     init() {
         LoadTasks()
@@ -36,10 +38,6 @@ public class TaskFetcher {
         
         let jsonData = try! encoder.encode(tasks)
         try! jsonData.write(to: jsonPath)
-        
-        //
-        let convertedString = String(data: jsonData, encoding: String.Encoding.utf8)
-        print(convertedString!)
     }
     
     func UpdateTaskName(name: String, id: Int)
@@ -88,7 +86,7 @@ public class TaskFetcher {
         tasks[index!].categories.removeAll(where: { (category) -> Bool in
             category == categoryID
         })
-            
+        
         SaveTasks()
     }
 }
